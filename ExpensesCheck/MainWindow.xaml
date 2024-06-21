@@ -12,16 +12,19 @@
             <RowDefinition/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Border CornerRadius="50">
-                <Button>
-                    <TextBlock Text="Счета"></TextBlock>
-                </Button>
-            </Border>
-
-            <TextBlock Text="Категории"></TextBlock>
-            <TextBlock Text="Операции"></TextBlock>
-            <TextBlock Text="Статистика"></TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button BorderBrush="LightBlue" Background="Transparent" Margin="10, 0" Width="52">
+                <Image Height="20" Source="./imgs/scheta.png"></Image>
+            </Button>
+            <Button BorderBrush="LightGreen" Background="Transparent" Margin="10, 0" Width="52">
+                <Image Height="20" Source="./imgs/scheta.png"></Image>
+            </Button>
+            <Button BorderBrush="LightPink" Background="Transparent" Margin="10, 0" Width="52">
+                <Image Height="20" Source="./imgs/scheta.png"></Image>
+            </Button>
+            <Button BorderBrush="Brown" Background="Transparent" Margin="10, 0" Width="52">
+                <Image Height="20" Source="./imgs/scheta.png"></Image>
+            </Button>
         </StackPanel>
         <Frame Name="frame" Grid.Row="1"></Frame>
     </Grid>
