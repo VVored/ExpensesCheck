@@ -13,7 +13,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <TextBlock Margin="20,0,20,0" FontSize="30" Grid.Row="0">Счета:</TextBlock>
+        <Viewbox Grid.Row="0" HorizontalAlignment="Left" Margin="20,0">
+            <TextBlock>Счета:</TextBlock>
+        </Viewbox>
         <ListView Name="lvScheta" Grid.Row="1">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -22,18 +24,19 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Background="{Binding Color}" BorderThickness="1" BorderBrush="{Binding Color}" CornerRadius="500">
-                            <StackPanel Margin="10" Orientation="Horizontal">
-                                <Image Margin="0, 0" Height="30" Source="{Binding ImagePath}"></Image>
+                    <Viewbox>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="{Binding Color}" BorderThickness="1" BorderBrush="{Binding Color}" CornerRadius="500">
+                                <StackPanel Margin="10" Orientation="Horizontal">
+                                    <Image Margin="0, 0" Height="30" Source="{Binding ImagePath}"></Image>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Margin="10, 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FontSize="20" Text="{Binding Name}"></TextBlock>
+                                <TextBlock FontSize="20" Text="{Binding TotalBankToString}"></TextBlock>
                             </StackPanel>
-                        </Border>
-                        <StackPanel Margin="10, 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock FontSize="20" Text="{Binding Name}"></TextBlock>
-                            <TextBlock FontSize="20" Text="{Binding TotalBankToString}"></TextBlock>
                         </StackPanel>
-                    </StackPanel>
-                    
+                    </Viewbox>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

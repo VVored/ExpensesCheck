@@ -24,12 +24,7 @@ namespace ExpensesCheck.pages
         {
             InitializeComponent();
             List<Wallet> wallets = new List<Wallet>();
-            Wallet wallet = new Wallet();
-            wallet.Id = 0;
-            wallet.Name = "Карта";
-            wallet.TotalBank = 17000;
-            wallet.Color = Brushes.Coral;
-            wallet.Image = "scheta.png";
+            Wallet wallet = new Wallet("Карта", 17000, Brushes.AliceBlue, "scheta.png");
             wallets.Add(wallet);
             lvScheta.ItemsSource = wallets;
         }

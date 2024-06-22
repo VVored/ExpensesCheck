@@ -4,17 +4,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ExpensesCheck
 {
-    interface IManipulationWithMoneyBank
+    interface IManipulationWithMoney
     {
-        public void Replenishment(decimal amount, MoneyBank moneyBank);
-        public void Debit(decimal amount, MoneyBank moneyBank);
+        public void Replenishment(decimal amount, Category Category);
+        public void Debit(decimal amount, Category Category);
     }
-    public abstract class MoneyBank
+    public class Category
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -35,47 +37,50 @@ namespace ExpensesCheck
                 return TotalBank + " RUB";
             }
         }
-    }
-    public class Category : MoneyBank
-    {
-        public Category(string name, decimal totalSum)
+        public Category(string name, decimal totalBank, SolidColorBrush color, string image)
         {
+            Id = 0;
             Name = name;
-            TotalBank = 0;
+            TotalBank = totalBank;
+            Color = color;
+            Image = image;
         }
     }
 
     public class Operation
     {
-        public Operation (decimal moneyAmount, MoneyBank sender, MoneyBank recipient, DateTime dateOfTransaction)
+        public Operation (decimal moneyAmount, Category sender, Category recipient, DateTime dateOfTransaction)
         {
+            Id = 0;
             MoneyAmount = moneyAmount;
-            SenderMoneyBank = sender;
-            RecipientMoneyBank = recipient;
+            Sender = sender;
+            Recipient = recipient;
             DateOfTransaction = dateOfTransaction;
         }
         public int Id { get; set; }
         public decimal MoneyAmount { get; set; }
-        public MoneyBank SenderMoneyBank { get; set; }
-        public MoneyBank RecipientMoneyBank { get; set; }
+        public Category Sender { get; set; }
+        public Category Recipient { get; set; }
         public DateTime DateOfTransaction { get; set; }
     }
-    public class Wallet : MoneyBank, IManipulationWithMoneyBank
+    public class Wallet : Category, IManipulationWithMoney
     {
+        public Wallet(string name, decimal totalBank, SolidColorBrush color, string image) : base(name, totalBank, color, image) => Operations = new List<Operation>();
+
         public List<Operation> Operations { get; set; }
-        public void Debit(decimal amount, MoneyBank moneyBank)
+        public void Debit(decimal amount, Category Category)
         {
-            Operation debitOperation = new Operation(amount, this, moneyBank, DateTime.Now);
+            Operation debitOperation = new Operation(amount, this, Category, DateTime.Now);
             Operations.Add(debitOperation);
             TotalBank -= amount;
-            moneyBank.TotalBank += amount;
+            Category.TotalBank += amount;
         }
 
-        public void Replenishment(decimal amount, MoneyBank moneyBank)
+        public void Replenishment(decimal amount, Category Category)
         {
-            Operation replenishmentOperation = new Operation(amount, moneyBank, this, DateTime.Now);
+            Operation replenishmentOperation = new Operation(amount, Category, this, DateTime.Now);
             Operations.Add(replenishmentOperation);
-            moneyBank.TotalBank -= amount;
+            Category.TotalBank -= amount;
             TotalBank += amount;
         }
     }

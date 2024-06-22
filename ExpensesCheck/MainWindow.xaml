@@ -12,20 +12,22 @@
             <RowDefinition/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Click="SchetaPageOpen" BorderBrush="LightBlue" Background="LightBlue" Margin="10, 0" Width="52">
-                <Image Height="20" Source="/imgs/scheta.png"></Image>
-            </Button>
-            <Button BorderBrush="LightGreen" Background="LightGreen" Margin="10, 0" Width="52">
-                <Image Height="20" Source="/imgs/scheta.png"></Image>
-            </Button>
-            <Button BorderBrush="LightPink" Background="LightPink" Margin="10, 0" Width="52">
-                <Image Height="20" Source="/imgs/scheta.png"></Image>
-            </Button>
-            <Button BorderBrush="Brown" Background="Brown" Margin="10, 0" Width="52">
-                <Image Height="20" Source="/imgs/scheta.png"></Image>
-            </Button>
-        </StackPanel>
+        <Viewbox Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="SchetaPageOpen" BorderBrush="LightBlue" Background="LightBlue" Margin="10, 10" Width="52">
+                    <Image Height="20" Source="/imgs/scheta.png"></Image>
+                </Button>
+                <Button BorderBrush="LightGreen" Background="LightGreen" Margin="10, 0" Width="52">
+                    <Image Height="20" Source="/imgs/scheta.png"></Image>
+                </Button>
+                <Button BorderBrush="LightPink" Background="LightPink" Margin="10, 0" Width="52">
+                    <Image Height="20" Source="/imgs/scheta.png"></Image>
+                </Button>
+                <Button BorderBrush="Brown" Background="Brown" Margin="10, 0" Width="52">
+                    <Image Height="20" Source="/imgs/scheta.png"></Image>
+                </Button>
+            </StackPanel>
+        </Viewbox>
         <Frame NavigationUIVisibility="Hidden" Name="frame" Grid.Row="1"></Frame>
     </Grid>
 </Window>
