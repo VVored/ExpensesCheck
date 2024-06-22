@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ExpensesCheck
 {
@@ -24,7 +25,14 @@ namespace ExpensesCheck
         {
             get
             {
-                return AppDomain.CurrentDomain.BaseDirectory + ".\\.\\" + Image;
+                return "..\\imgs\\" + Image;
+            }
+        }
+        public virtual string TotalBankToString
+        {
+            get
+            {
+                return TotalBank + " RUB";
             }
         }
     }

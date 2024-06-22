@@ -9,12 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="imgs\scheta.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="imgs\" />
     <Folder Include="xmlFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="imgs\scheta.png" />
   </ItemGroup>
 
 </Project>
