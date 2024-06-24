@@ -17,7 +17,7 @@
                 <Button Click="SchetaPageOpen" BorderBrush="LightBlue" Background="LightBlue" Margin="10, 10" Width="52">
                     <Image Height="20" Source="/imgs/scheta.png"></Image>
                 </Button>
-                <Button BorderBrush="LightGreen" Background="LightGreen" Margin="10, 0" Width="52">
+                <Button Click="CategoryPageOpen" BorderBrush="LightGreen" Background="LightGreen" Margin="10, 0" Width="52">
                     <Image Height="20" Source="/imgs/scheta.png"></Image>
                 </Button>
                 <Button BorderBrush="LightPink" Background="LightPink" Margin="10, 0" Width="52">

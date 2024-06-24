@@ -16,19 +16,19 @@ using System.Windows.Shapes;
 namespace ExpensesCheck.pages
 {
     /// <summary>
-    /// Логика взаимодействия для SchetaPage.xaml
+    /// Логика взаимодействия для CategoryPage.xaml
     /// </summary>
-    public partial class SchetaPage : Page
+    public partial class CategoryPage : Page
     {
-        public SchetaPage()
+        public CategoryPage()
         {
             InitializeComponent();
-            List<Wallet> wallets = new List<Wallet>();
-            Wallet wallet = new Wallet("Карта", 17000, Brushes.AliceBlue, "scheta.png");
-            Wallet wallet1 = new Wallet("brat", 17000, Brushes.GreenYellow, "scheta.png");
-            wallets.Add(wallet);
-            wallets.Add(wallet1);
-            lvScheta.ItemsSource = wallets;
+            List<Category> categories = new List<Category>();
+            Category category = new Category("Еда", 0, Brushes.AliceBlue, "scheta.png");
+            Category category1 = new Category("Еда", 0, Brushes.Yellow, "scheta.png");
+            categories.Add(category);
+            categories.Add(category1);
+            lvCatergory.ItemsSource = categories;
         }
     }
 }

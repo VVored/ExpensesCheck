@@ -25,5 +25,10 @@ namespace ExpensesCheck
         {
             frame.NavigationService.Navigate(new pages.SchetaPage());
         }
+
+        private void CategoryPageOpen(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new pages.CategoryPage());
+        }
     }
 }

@@ -19,24 +19,22 @@
         <ListView Name="lvScheta" Grid.Row="1">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" Margin="20,0"></StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="20, 0"></StackPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Viewbox>
-                        <StackPanel Orientation="Horizontal">
-                            <Border Background="{Binding Color}" BorderThickness="1" BorderBrush="{Binding Color}" CornerRadius="500">
-                                <StackPanel Margin="10" Orientation="Horizontal">
-                                    <Image Margin="0, 0" Height="30" Source="{Binding ImagePath}"></Image>
-                                </StackPanel>
-                            </Border>
-                            <StackPanel Margin="10, 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <TextBlock FontSize="20" Text="{Binding Name}"></TextBlock>
-                                <TextBlock FontSize="20" Text="{Binding TotalBankToString}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="{Binding Color}" BorderThickness="1" BorderBrush="{Binding Color}" CornerRadius="500">
+                            <StackPanel Margin="15" Orientation="Horizontal">
+                                <Image Margin="0, 0" Height="50" Source="{Binding ImagePath}"></Image>
                             </StackPanel>
+                        </Border>
+                        <StackPanel Margin="10, 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock FontSize="25" Text="{Binding Name}"></TextBlock>
+                            <TextBlock FontSize="25" Text="{Binding TotalBankToString}"></TextBlock>
                         </StackPanel>
-                    </Viewbox>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
