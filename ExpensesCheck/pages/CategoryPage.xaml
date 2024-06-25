@@ -38,7 +38,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <wpf:PieChart DataClick="Chart_OnDataClick" Grid.Row="2" Name="pieChart">
+        <wpf:PieChart Grid.Row="2" Name="pieChart">
         </wpf:PieChart>
     </Grid>
 </Page>

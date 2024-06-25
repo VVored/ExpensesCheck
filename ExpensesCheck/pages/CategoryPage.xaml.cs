@@ -17,7 +17,7 @@ namespace ExpensesCheck.pages
         public CategoryPage()
         {
             InitializeComponent();
-            List<Category> categories = new List<Category>() { new Category("Еда", 10, Brushes.AliceBlue, "scheta.png")};
+            List<Category> categories = new List<Category>() { new Category("ZZZ", 10, Brushes.Blue, "scheta.png"), new Category("VVV", 10, Brushes.Red, "scheta.png") };
             this.categories = categories;
             lvCatergory.ItemsSource = this.categories;
             foreach (var category in this.categories)
@@ -26,21 +26,11 @@ namespace ExpensesCheck.pages
                 {
                     Title = category.Name,
                     Values = new ChartValues<decimal> { category.TotalBank },
-                    
+                    Fill = category.Color,
+                    DataLabels = true,
+                    LabelPoint = pieChart => string.Format("{0}", pieChart.Y),
                 });
             }
-        }
-
-        private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
-        {
-            var chart = (PieChart)chartpoint.ChartView;
-
-            //clear selected slice.
-            foreach (PieSeries series in chart.Series)
-                series.PushOut = 0;
-
-            var selectedSeries = (PieSeries)chartpoint.SeriesView;
-            selectedSeries.PushOut = 8;
         }
     }
 }
