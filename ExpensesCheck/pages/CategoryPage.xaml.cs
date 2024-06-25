@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Definitions.Charts;
+using LiveCharts.Wpf;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ExpensesCheck.pages
 {
@@ -20,15 +12,35 @@ namespace ExpensesCheck.pages
     /// </summary>
     public partial class CategoryPage : Page
     {
+        List<Category> categories;
+        SeriesCollection pieSeries { get; set; }
         public CategoryPage()
         {
             InitializeComponent();
-            List<Category> categories = new List<Category>();
-            Category category = new Category("Еда", 0, Brushes.AliceBlue, "scheta.png");
-            Category category1 = new Category("Еда", 0, Brushes.Yellow, "scheta.png");
-            categories.Add(category);
-            categories.Add(category1);
-            lvCatergory.ItemsSource = categories;
+            List<Category> categories = new List<Category>() { new Category("Еда", 10, Brushes.AliceBlue, "scheta.png")};
+            this.categories = categories;
+            lvCatergory.ItemsSource = this.categories;
+            foreach (var category in this.categories)
+            {
+                pieChart.Series.Add(new PieSeries
+                {
+                    Title = category.Name,
+                    Values = new ChartValues<decimal> { category.TotalBank },
+                    
+                });
+            }
+        }
+
+        private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
+        {
+            var chart = (PieChart)chartpoint.ChartView;
+
+            //clear selected slice.
+            foreach (PieSeries series in chart.Series)
+                series.PushOut = 0;
+
+            var selectedSeries = (PieSeries)chartpoint.SeriesView;
+            selectedSeries.PushOut = 8;
         }
     }
 }

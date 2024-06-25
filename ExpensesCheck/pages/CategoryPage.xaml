@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ExpensesCheck.pages"
+      xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CategoryPage">
@@ -20,7 +21,7 @@
         <ListView Grid.Row="1" Name="lvCatergory">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 0"></WrapPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="700"></WrapPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
@@ -37,5 +38,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <wpf:PieChart DataClick="Chart_OnDataClick" Grid.Row="2" Name="pieChart">
+        </wpf:PieChart>
     </Grid>
 </Page>
