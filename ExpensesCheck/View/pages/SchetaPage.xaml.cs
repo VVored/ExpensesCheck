@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ExpensesCheck.Model;
 
 namespace ExpensesCheck.pages
 {
@@ -23,12 +24,12 @@ namespace ExpensesCheck.pages
         public SchetaPage()
         {
             InitializeComponent();
-            List<Wallet> wallets = new List<Wallet>();
-            Wallet wallet = new Wallet("Карта", 17000, Brushes.AliceBlue, "scheta.png");
-            Wallet wallet1 = new Wallet("brat", 17000, Brushes.GreenYellow, "scheta.png");
-            wallets.Add(wallet);
-            wallets.Add(wallet1);
-            lvScheta.ItemsSource = wallets;
+            List<MoneyBank> MoneyBanks = new List<MoneyBank>();
+            MoneyBank wallet = new MoneyBank("Карта", 17000, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет);
+            MoneyBank wallet1 = new MoneyBank("brat", 17000, Brushes.GreenYellow, "scheta.png", TypeOfMoneyBank.Счет);
+            MoneyBanks.Add(wallet);
+            MoneyBanks.Add(wallet1);
+            lvScheta.ItemsSource = MoneyBanks;
         }
     }
 }
