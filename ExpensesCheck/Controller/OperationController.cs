@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml;
 
 namespace ExpensesCheck.Controller
 {
@@ -21,8 +22,32 @@ namespace ExpensesCheck.Controller
             sender.TotalBank -= amount;
             recipient.TotalBank += amount;
             operations.Add(operation);
-            /*SaveChangesToXml();*/
+            SaveChangesToXml();
         }
-        /*private void SaveChangesToXml();*/
+        private void SaveChangesToXml()
+        {
+            using (XmlWriter writer = XmlWriter.Create("..\\xmlFiles\\MoneyBank.xml"))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("moneybanks");
+
+                foreach (var i in operations)
+                {
+                    writer.WriteStartElement("moneybank");
+
+                    writer.WriteElementString("id", i.Id.ToString());
+                    writer.WriteElementString("moneyamount", i.MoneyAmount.ToString());
+                    writer.WriteElementString("senderId", i.Sender.Id.ToString());
+                    writer.WriteElementString("recipientId", i.Recipient.Id.ToString());
+                    writer.WriteElementString("dateoftransaction", i.DateOfTransaction.ToString("f"));
+
+                    writer.WriteEndElement();
+                }
+
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+            }
+        }
+
     }
 }
