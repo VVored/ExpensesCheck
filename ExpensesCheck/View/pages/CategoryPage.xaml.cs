@@ -6,7 +6,7 @@ using LiveCharts.Wpf;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ExpensesCheck.pages
+namespace ExpensesCheck.View.pages
 {
     /// <summary>
     /// Логика взаимодействия для MoneyBankPage.xaml

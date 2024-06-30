@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ExpensesCheck.Model;
 
-namespace ExpensesCheck.pages
+namespace ExpensesCheck.View.pages
 {
     /// <summary>
     /// Логика взаимодействия для SchetaPage.xaml
