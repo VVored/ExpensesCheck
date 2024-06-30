@@ -21,11 +21,14 @@ namespace ExpensesCheck
             InitializeComponent();
         }
 
-        private void GoHome(object sender, RoutedEventArgs e)
+        private void SchetaPageOpen(object sender, RoutedEventArgs e)
         {
-            HomeWindow homeWindow = new HomeWindow();
-            homeWindow.Show();
-            Close();
+            frame.NavigationService.Navigate(new View.SchetaPage());
+        }
+
+        private void CategoryPageOpen(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new View.CategoryPage());
         }
     }
 }
