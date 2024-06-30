@@ -9,6 +9,35 @@
       Title="HistoryOfOperationsPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0" HorizontalAlignment="Left" Margin="20,0">
+            <TextBlock>История:</TextBlock>
+        </Viewbox>
+        <ListView Name="lvOperations" Grid.Row="1">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" Margin="20, 0"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="{Binding Recipient.Color}" BorderThickness="1" BorderBrush="{Binding Recipient.Color}" CornerRadius="500">
+                            <StackPanel Margin="15" Orientation="Horizontal">
+                                <Image Margin="0, 0" Height="50" Source="{Binding Recipient.ImagePath}"></Image>
+                            </StackPanel>
+                        </Border>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Recipient.Name}"></TextBlock>
+                            <TextBlock Text="{Binding Sender.Name}"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="{Binding MoneyAmount}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
