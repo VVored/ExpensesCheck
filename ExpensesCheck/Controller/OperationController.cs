@@ -11,7 +11,7 @@ namespace ExpensesCheck.Controller
 {
     public class OperationController
     {
-        private readonly List<Operation> operations;a
+        private readonly List<Operation> operations;
         public OperationController(List<Operation> operations)
         {
             this.operations = operations;
