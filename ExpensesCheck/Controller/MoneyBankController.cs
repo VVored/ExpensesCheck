@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Xml;
 using ExpensesCheck.Model;
 
@@ -44,13 +46,57 @@ namespace ExpensesCheck.Controller
                     writer.WriteElementString("totalbank", i.TotalBank.ToString());
                     writer.WriteElementString("color", i.Color.Color.ToString());
                     writer.WriteElementString("image", i.Image);
-                    writer.WriteElementString("type", i.Type.ToString());
+                    writer.WriteElementString("type", ((int)i.Type).ToString());
 
                     writer.WriteEndElement();
                 }
 
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
+            }
+        }
+        private void ImportDataFromXml()
+        {
+            var brushConverter = new BrushConverter();
+            using (XmlReader reader = XmlReader.Create("..\\xmlFiles\\MoneyBank.xml"))
+            {
+                while (reader.Read())
+                {
+                    var moneybank = new MoneyBank();
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "id")
+                    {
+                        moneybank.Id = int.Parse(reader.ReadElementContentAsString());
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "name")
+                    {
+                        moneybank.Name = reader.ReadElementContentAsString();
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "totalbank")
+                    {
+                        moneybank.TotalBank = decimal.Parse(reader.ReadElementContentAsString());
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "color")
+                    {
+                        moneybank.Color = (SolidColorBrush)brushConverter.ConvertFrom(reader.ReadElementContentAsString());
+                        if (moneybank.Color == null)
+                        {
+                            moneybank.Color = Brushes.AliceBlue;
+                        }
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "image")
+                    {
+                        moneybank.Image = reader.ReadElementContentAsString();
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "type")
+                    {
+                        /*moneybank.Type = (TypeOfMoneyBank)Enum.Parse(typeof(TypeOfMoneyBank), reader.ReadElementContentAsString()); если тип сохранен как строка*/
+                        moneybank.Type = (TypeOfMoneyBank)int.Parse(reader.ReadElementContentAsString()); // если тип сохранен как значение
+                    }
+                    if (moneybank.Id != 0)
+                    {
+                        AddMoneyBank(moneybank);
+                    }
+                }
             }
         }
     }

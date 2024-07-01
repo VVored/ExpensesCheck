@@ -30,14 +30,23 @@ namespace ExpensesCheck.Model
                 return TotalBank + " RUB";
             }
         }
-        public MoneyBank(string name, decimal totalBank, SolidColorBrush color, string image, TypeOfMoneyBank typeOfMoneyBank)
+        public MoneyBank(int id,string name, decimal totalBank, SolidColorBrush color, string image, TypeOfMoneyBank typeOfMoneyBank)
         {
-            Id = 0;
+            Id = id;
             Name = name;
             TotalBank = totalBank;
             Color = color;
             Image = image;
             Type = typeOfMoneyBank;
+        }
+        public MoneyBank()
+        {
+            Id = 0;
+            Name = "";
+            TotalBank = 0;
+            Color = Brushes.Transparent;
+            Image = "";
+            Type = TypeOfMoneyBank.Категория;
         }
     }
 }

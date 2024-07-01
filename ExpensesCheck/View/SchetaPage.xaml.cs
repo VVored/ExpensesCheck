@@ -25,8 +25,8 @@ namespace ExpensesCheck.View
         {
             InitializeComponent();
             List<MoneyBank> MoneyBanks = new List<MoneyBank>();
-            MoneyBank wallet = new MoneyBank("Карта", 17000, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет);
-            MoneyBank wallet1 = new MoneyBank("brat", 17000, Brushes.GreenYellow, "scheta.png", TypeOfMoneyBank.Счет);
+            MoneyBank wallet = new MoneyBank(1, "Карта", 17000, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет);
+            MoneyBank wallet1 = new MoneyBank(1, "brat", 17000, Brushes.GreenYellow, "scheta.png", TypeOfMoneyBank.Счет);
             MoneyBanks.Add(wallet);
             MoneyBanks.Add(wallet1);
             lvScheta.ItemsSource = MoneyBanks;

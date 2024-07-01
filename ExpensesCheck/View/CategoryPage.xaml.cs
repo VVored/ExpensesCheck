@@ -27,7 +27,7 @@ namespace ExpensesCheck.View
         public CategoryPage()
         {
             InitializeComponent();
-            List<MoneyBank> categories = new List<MoneyBank>() { new MoneyBank("ZZZ", 10, Brushes.Blue, "scheta.png", TypeOfMoneyBank.Категория), new MoneyBank("VVV", 10, Brushes.Red, "scheta.png", TypeOfMoneyBank.Категория) };
+            List<MoneyBank> categories = new List<MoneyBank>() { new MoneyBank(1, "ZZZ", 10, Brushes.Blue, "scheta.png", TypeOfMoneyBank.Категория), new MoneyBank(1, "VVV", 10, Brushes.Red, "scheta.png", TypeOfMoneyBank.Категория) };
             this.categories = categories;
             lvCatergory.ItemsSource = this.categories;
             foreach (var MoneyBank in this.categories)
