@@ -1,4 +1,5 @@
-﻿using ExpensesCheck.Model;
+﻿using ExpensesCheck.Controller;
+using ExpensesCheck.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,13 @@ namespace ExpensesCheck.View
     /// </summary>
     public partial class HistoryOfOperationsPage : Page
     {
+        OperationController operationController;
         public HistoryOfOperationsPage()
         {
             InitializeComponent();
+            List<Operation> operations = new List<Operation>() { new Operation(100, new MoneyBank("mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank("mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Категория), DateTime.Now), new Operation(100, new MoneyBank("mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank("mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Категория), DateTime.Now) };
+            operationController = new OperationController(operations);
+            lvOperations.ItemsSource = operations;
         }
     }
 }

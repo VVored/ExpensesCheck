@@ -30,11 +30,12 @@
                                 <Image Margin="0, 0" Height="50" Source="{Binding Recipient.ImagePath}"></Image>
                             </StackPanel>
                         </Border>
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                             <TextBlock Text="{Binding Recipient.Name}"></TextBlock>
                             <TextBlock Text="{Binding Sender.Name}"></TextBlock>
                         </StackPanel>
-                        <TextBlock Text="{Binding MoneyAmount}"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding MoneyAmount}"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding DateOfTransaction}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
