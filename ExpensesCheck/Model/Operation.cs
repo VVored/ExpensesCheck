@@ -8,13 +8,21 @@ namespace ExpensesCheck.Model
 {
     public class Operation
     {
-        public Operation(decimal moneyAmount, MoneyBank sender, MoneyBank recipient, DateTime dateOfTransaction)
+        public Operation(int id,decimal moneyAmount, MoneyBank sender, MoneyBank recipient, DateTime dateOfTransaction)
         {
-            Id = 0;
+            Id = id;
             MoneyAmount = moneyAmount;
             Sender = sender;
             Recipient = recipient;
             DateOfTransaction = dateOfTransaction;
+        }
+        public Operation()
+        {
+            Id = 0;
+            MoneyAmount = 0;
+            Sender = null;
+            Recipient = null;
+            DateOfTransaction = DateTime.Now;
         }
         public int Id { get; set; }
         public decimal MoneyAmount { get; set; }

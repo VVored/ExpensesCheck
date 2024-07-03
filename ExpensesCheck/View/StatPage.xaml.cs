@@ -1,6 +1,4 @@
-﻿using ExpensesCheck.Controller;
-using ExpensesCheck.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,16 +16,13 @@ using System.Windows.Shapes;
 namespace ExpensesCheck.View
 {
     /// <summary>
-    /// Логика взаимодействия для HistoryOfOperationsPage.xaml
+    /// Логика взаимодействия для StatPage.xaml
     /// </summary>
-    public partial class HistoryOfOperationsPage : Page
+    public partial class StatPage : Page
     {
-        OperationController operationController;
-        public HistoryOfOperationsPage()
+        public StatPage()
         {
             InitializeComponent();
-            operationController = new OperationController();
-            lvOperations.ItemsSource = operationController.GetOperations();
         }
     }
 }

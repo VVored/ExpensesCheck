@@ -15,9 +15,10 @@ namespace ExpensesCheck.Controller
     {
         private readonly List<MoneyBank> moneyBanks;
 
-        public MoneyBankController(List<MoneyBank> moneyBanks)
+        public MoneyBankController()
         {
-            this.moneyBanks = moneyBanks;
+            /*moneyBanks = ImportDataFromXml();*/
+            moneyBanks = new List<MoneyBank>() { new MoneyBank(1, "ZZZ", 10, Brushes.Blue, "scheta.png", TypeOfMoneyBank.Категория), new MoneyBank(1, "VVV", 10, Brushes.Red, "scheta.png", TypeOfMoneyBank.Категория), new MoneyBank(1, "Карта", 17000, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank(1, "brat", 17000, Brushes.GreenYellow, "scheta.png", TypeOfMoneyBank.Счет) };
         }
 
         public void AddMoneyBank(MoneyBank moneyBank)
@@ -55,8 +56,9 @@ namespace ExpensesCheck.Controller
                 writer.WriteEndDocument();
             }
         }
-        private void ImportDataFromXml()
+        private List<MoneyBank> ImportDataFromXml()
         {
+            List<MoneyBank> result = new List<MoneyBank>();
             var brushConverter = new BrushConverter();
             using (XmlReader reader = XmlReader.Create("..\\xmlFiles\\MoneyBank.xml"))
             {
@@ -94,10 +96,28 @@ namespace ExpensesCheck.Controller
                     }
                     if (moneybank.Id != 0)
                     {
-                        AddMoneyBank(moneybank);
+                        result.Add(moneybank);
                     }
                 }
             }
+            return result;
+        }
+        public MoneyBank GetById(int id)
+        {
+            var result = new MoneyBank();
+            foreach (var i in moneyBanks)
+            {
+                if (i.Id == id)
+                {
+                    result = i;
+                    break;
+                }
+            } 
+            return result;
+        }
+        public List<MoneyBank> GetMoneyBanks()
+        {
+            return moneyBanks;
         }
     }
 }

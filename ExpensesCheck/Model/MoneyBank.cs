@@ -10,6 +10,24 @@ namespace ExpensesCheck.Model
     public enum TypeOfMoneyBank { Счет = 1, Категория = 2 };
     public class MoneyBank
     {
+        public MoneyBank(int id, string name, decimal totalBank, SolidColorBrush color, string image, TypeOfMoneyBank typeOfMoneyBank)
+        {
+            Id = id;
+            Name = name;
+            TotalBank = totalBank;
+            Color = color;
+            Image = image;
+            Type = typeOfMoneyBank;
+        }
+        public MoneyBank()
+        {
+            Id = 0;
+            Name = "";
+            TotalBank = 0;
+            Color = Brushes.Transparent;
+            Image = "";
+            Type = TypeOfMoneyBank.Категория;
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal TotalBank { get; set; }
@@ -29,24 +47,6 @@ namespace ExpensesCheck.Model
             {
                 return TotalBank + " RUB";
             }
-        }
-        public MoneyBank(int id,string name, decimal totalBank, SolidColorBrush color, string image, TypeOfMoneyBank typeOfMoneyBank)
-        {
-            Id = id;
-            Name = name;
-            TotalBank = totalBank;
-            Color = color;
-            Image = image;
-            Type = typeOfMoneyBank;
-        }
-        public MoneyBank()
-        {
-            Id = 0;
-            Name = "";
-            TotalBank = 0;
-            Color = Brushes.Transparent;
-            Image = "";
-            Type = TypeOfMoneyBank.Категория;
         }
     }
 }

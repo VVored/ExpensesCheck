@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Xml;
 
 namespace ExpensesCheck.Controller
@@ -11,13 +12,16 @@ namespace ExpensesCheck.Controller
     public class OperationController
     {
         private readonly List<Operation> operations;
-        public OperationController(List<Operation> operations)
+        private readonly MoneyBankController moneyBankController;
+        public OperationController()
         {
-            this.operations = operations;
+            /*operations = ImportDataFromXml();*/
+            operations = new List<Operation>() { new Operation(1, 100, new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Категория), DateTime.Now), new Operation(1, 100, new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Категория), DateTime.Now) };
+            moneyBankController = new MoneyBankController();
         }
-        public void AddOperation(decimal amount, MoneyBank sender, MoneyBank recipient)
+        public void AddOperation(int id,decimal amount, MoneyBank sender, MoneyBank recipient)
         {
-            Operation operation = new Operation(amount, sender, recipient, DateTime.Now);
+            Operation operation = new Operation(id, amount, sender, recipient, DateTime.Now);
             sender.TotalBank -= amount;
             recipient.TotalBank += amount;
             operations.Add(operation);
@@ -25,7 +29,7 @@ namespace ExpensesCheck.Controller
         }
         private void SaveChangesToXml()
         {
-            using (XmlWriter writer = XmlWriter.Create("..\\xmlFiles\\MoneyBank.xml"))
+            using (XmlWriter writer = XmlWriter.Create("..\\xmlFiles\\Operation.xml"))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("moneybanks");
@@ -47,6 +51,45 @@ namespace ExpensesCheck.Controller
                 writer.WriteEndDocument();
             }
         }
-
+        private List<Operation> ImportDataFromXml()
+        {
+            List<Operation> result = new List<Operation>();
+            using (XmlReader reader = XmlReader.Create("..\\xmlFiles\\Operation.xml"))
+            {
+                while (reader.Read())
+                {
+                    var operation = new Operation();
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "id")
+                    {
+                        operation.Id = int.Parse(reader.ReadElementContentAsString());
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "moneyamount")
+                    {
+                        operation.MoneyAmount = decimal.Parse(reader.ReadElementContentAsString());
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "senderId")
+                    {
+                        operation.Sender = moneyBankController.GetById(int.Parse(reader.ReadElementContentAsString()));
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "recipientId")
+                    {
+                        operation.Recipient = moneyBankController.GetById(int.Parse(reader.ReadElementContentAsString()));
+                    }
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "dateoftransaction")
+                    {
+                        operation.DateOfTransaction = DateTime.Parse(reader.ReadElementContentAsString());
+                    }
+                    if (operation.Id !=  0)
+                    {
+                        result.Add(operation);
+                    }
+                }
+            }
+            return result;
+        }
+        public List<Operation> GetOperations()
+        {
+            return operations;
+        }
     }
 }
