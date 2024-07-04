@@ -23,7 +23,7 @@
                 <Button Click="HistoryOfOperationsPage" BorderBrush="LightPink" Background="LightPink" Margin="10, 0" Width="52">
                     <Image Height="20" Source="/imgs/scheta.png"></Image>
                 </Button>
-                <Button BorderBrush="Brown" Background="Brown" Margin="10, 0" Width="52">
+                <Button Click="StatPageOpen" BorderBrush="Brown" Background="Brown" Margin="10, 0" Width="52">
                     <Image Height="20" Source="/imgs/scheta.png"></Image>
                 </Button>
             </StackPanel>

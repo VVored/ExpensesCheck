@@ -20,10 +20,15 @@
         <Frame Name="ChartsFrame" Grid.Row="1"></Frame>
         <Viewbox Grid.Row="2">
             <StackPanel Orientation="Horizontal">
-                <Button Margin="10, 0"></Button>
-                <Button Margin="10, 0"></Button>
-                <Button Margin="10, 0"></Button>
-                <Button Margin="10, 0"></Button>
+                <Button Click="PointShapeLinePageOpen" Margin="10, 0">
+                    <Image></Image>
+                </Button>
+                <Button Click="StackedColumnPageOpen" Margin="10, 0">
+                    <Image></Image>
+                </Button>
+                <Button Margin="10, 0">
+                    <Image></Image>
+                </Button>
             </StackPanel>
         </Viewbox>
     </Grid>

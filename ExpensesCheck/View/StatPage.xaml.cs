@@ -24,5 +24,15 @@ namespace ExpensesCheck.View
         {
             InitializeComponent();
         }
+
+        private void PointShapeLinePageOpen(object sender, RoutedEventArgs e)
+        {
+            ChartsFrame.NavigationService.Navigate(new Charts.PointShapeLinePage());
+        }
+
+        private void StackedColumnPageOpen(object sender, RoutedEventArgs e)
+        {
+            ChartsFrame.Navigate(new Charts.StackedColumnPage());
+        }
     }
 }

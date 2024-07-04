@@ -35,5 +35,10 @@ namespace ExpensesCheck
         {
             frame.NavigationService.Navigate(new View.HistoryOfOperationsPage());
         }
+
+        private void StatPageOpen(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new View.StatPage());
+        }
     }
 }
