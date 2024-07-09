@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ExpensesCheck.Model
 {
-    abstract class BasicChart
+    public abstract class BasicChart
     {
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> YFormatter { get; set; }
+        public SeriesCollection SeriesCollection { get; set; } = new SeriesCollection();
+        public string[] Labels { get; set; } = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        public Func<double, string> Formatter { get; set; } = value => value + " RUB";
     }
 }

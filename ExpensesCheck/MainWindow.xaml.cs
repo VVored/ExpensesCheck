@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ExpensesCheck.Controller;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,8 @@ namespace ExpensesCheck
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MoneyBankController moneyBankController { get; set; } = new MoneyBankController();
+        public static OperationController operationController { get; set; } = new OperationController();
         public MainWindow()
         {
             InitializeComponent();

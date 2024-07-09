@@ -26,9 +26,6 @@
                 <Button Click="StackedColumnPageOpen" Margin="10, 0">
                     <Image></Image>
                 </Button>
-                <Button Margin="10, 0">
-                    <Image></Image>
-                </Button>
             </StackPanel>
         </Viewbox>
     </Grid>

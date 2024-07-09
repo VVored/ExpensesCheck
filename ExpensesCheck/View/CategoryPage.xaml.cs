@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ExpensesCheck.Controller;
 
 namespace ExpensesCheck.View
 {
@@ -23,14 +24,12 @@ namespace ExpensesCheck.View
     /// </summary>
     public partial class CategoryPage : Page
     {
-        List<MoneyBank> categories;
         public CategoryPage()
         {
             InitializeComponent();
-            List<MoneyBank> categories = new List<MoneyBank>() { new MoneyBank(1, "ZZZ", 10, Brushes.Blue, "scheta.png", TypeOfMoneyBank.Категория), new MoneyBank(1, "VVV", 10, Brushes.Red, "scheta.png", TypeOfMoneyBank.Категория) };
-            this.categories = categories;
-            lvCatergory.ItemsSource = this.categories;
-            foreach (var MoneyBank in this.categories)
+            List<MoneyBank> categories = MainWindow.moneyBankController.GetMoneyBanks().Where(moneybank => moneybank.Type == TypeOfMoneyBank.Категория).ToList();
+            lvCatergory.ItemsSource = categories;
+            foreach (var MoneyBank in categories)
             {
                 pieChart.Series.Add(new PieSeries
                 {

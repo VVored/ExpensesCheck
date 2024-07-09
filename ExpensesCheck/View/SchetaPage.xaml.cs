@@ -1,4 +1,5 @@
-﻿using ExpensesCheck.Model;
+﻿using ExpensesCheck.Controller;
+using ExpensesCheck.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,8 @@ namespace ExpensesCheck.View
         public SchetaPage()
         {
             InitializeComponent();
-            List<MoneyBank> MoneyBanks = new List<MoneyBank>();
-            MoneyBank wallet = new MoneyBank(1, "Карта", 17000, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет);
-            MoneyBank wallet1 = new MoneyBank(1, "brat", 17000, Brushes.GreenYellow, "scheta.png", TypeOfMoneyBank.Счет);
-            MoneyBanks.Add(wallet);
-            MoneyBanks.Add(wallet1);
-            lvScheta.ItemsSource = MoneyBanks;
+            List<MoneyBank> wallets = MainWindow.moneyBankController.GetMoneyBanks().Where(moneybank => moneybank.Type == TypeOfMoneyBank.Счет).ToList();
+            lvScheta.ItemsSource = wallets;
         }
     }
 }

@@ -21,4 +21,8 @@
     <Resource Include="imgs\scheta.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="xmlFiles\" />
+  </ItemGroup>
+
 </Project>

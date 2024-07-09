@@ -22,12 +22,10 @@ namespace ExpensesCheck.View
     /// </summary>
     public partial class HistoryOfOperationsPage : Page
     {
-        OperationController operationController;
         public HistoryOfOperationsPage()
         {
             InitializeComponent();
-            operationController = new OperationController();
-            lvOperations.ItemsSource = operationController.GetOperations();
+            lvOperations.ItemsSource = MainWindow.operationController.GetOperations();
         }
     }
 }

@@ -17,8 +17,7 @@ namespace ExpensesCheck.Controller
 
         public MoneyBankController()
         {
-            /*moneyBanks = ImportDataFromXml();*/
-            moneyBanks = new List<MoneyBank>() { new MoneyBank(1, "ZZZ", 10, Brushes.Blue, "scheta.png", TypeOfMoneyBank.Категория), new MoneyBank(1, "VVV", 10, Brushes.Red, "scheta.png", TypeOfMoneyBank.Категория), new MoneyBank(1, "Карта", 17000, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank(1, "brat", 17000, Brushes.GreenYellow, "scheta.png", TypeOfMoneyBank.Счет) };
+            moneyBanks = ImportDataFromXml();
         }
 
         public void AddMoneyBank(MoneyBank moneyBank)
@@ -33,7 +32,7 @@ namespace ExpensesCheck.Controller
         }
         private void SaveChangesToXml()
         {
-            using (XmlWriter writer = XmlWriter.Create("..\\xmlFiles\\MoneyBank.xml"))
+            using (XmlWriter writer = XmlWriter.Create("..\\..\\..\\xmlFiles\\MoneyBank.xml"))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("moneybanks");
@@ -60,7 +59,7 @@ namespace ExpensesCheck.Controller
         {
             List<MoneyBank> result = new List<MoneyBank>();
             var brushConverter = new BrushConverter();
-            using (XmlReader reader = XmlReader.Create("..\\xmlFiles\\MoneyBank.xml"))
+            using (XmlReader reader = XmlReader.Create("..\\..\\..\\xmlFiles\\MoneyBank.xml"))
             {
                 while (reader.Read())
                 {

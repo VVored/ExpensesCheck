@@ -15,9 +15,8 @@ namespace ExpensesCheck.Controller
         private readonly MoneyBankController moneyBankController;
         public OperationController()
         {
-            /*operations = ImportDataFromXml();*/
-            operations = new List<Operation>() { new Operation(1, 100, new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Категория), DateTime.Now), new Operation(1, 100, new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Счет), new MoneyBank(1, "mew", 100, Brushes.AliceBlue, "scheta.png", TypeOfMoneyBank.Категория), DateTime.Now) };
             moneyBankController = new MoneyBankController();
+            operations = ImportDataFromXml();
         }
         public void AddOperation(int id,decimal amount, MoneyBank sender, MoneyBank recipient)
         {
@@ -29,14 +28,14 @@ namespace ExpensesCheck.Controller
         }
         private void SaveChangesToXml()
         {
-            using (XmlWriter writer = XmlWriter.Create("..\\xmlFiles\\Operation.xml"))
+            using (XmlWriter writer = XmlWriter.Create("..\\..\\..\\xmlFiles\\Operation.xml"))
             {
                 writer.WriteStartDocument();
-                writer.WriteStartElement("moneybanks");
+                writer.WriteStartElement("operations");
 
                 foreach (var i in operations)
                 {
-                    writer.WriteStartElement("moneybank");
+                    writer.WriteStartElement("operation");
 
                     writer.WriteElementString("id", i.Id.ToString());
                     writer.WriteElementString("moneyamount", i.MoneyAmount.ToString());
@@ -54,7 +53,7 @@ namespace ExpensesCheck.Controller
         private List<Operation> ImportDataFromXml()
         {
             List<Operation> result = new List<Operation>();
-            using (XmlReader reader = XmlReader.Create("..\\xmlFiles\\Operation.xml"))
+            using (XmlReader reader = XmlReader.Create("..\\..\\..\\xmlFiles\\Operation.xml"))
             {
                 while (reader.Read())
                 {
