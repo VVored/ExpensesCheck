@@ -8,9 +8,9 @@ namespace ExpensesCheck.Model
 {
     public class Operation
     {
-        public Operation(int id,decimal moneyAmount, MoneyBank sender, MoneyBank recipient, DateTime dateOfTransaction)
+        public Operation(decimal moneyAmount, MoneyBank sender, MoneyBank recipient, DateTime dateOfTransaction)
         {
-            Id = id;
+            Id = Guid.NewGuid().ToString("N");
             MoneyAmount = moneyAmount;
             Sender = sender;
             Recipient = recipient;
@@ -18,13 +18,13 @@ namespace ExpensesCheck.Model
         }
         public Operation()
         {
-            Id = 0;
+            Id = "";
             MoneyAmount = 0;
             Sender = null;
             Recipient = null;
             DateOfTransaction = DateTime.Now;
         }
-        public int Id { get; set; }
+        public string Id { get; set; }
         public decimal MoneyAmount { get; set; }
         public MoneyBank Sender { get; set; }
         public MoneyBank Recipient { get; set; }

@@ -66,7 +66,7 @@ namespace ExpensesCheck.Controller
                     var moneybank = new MoneyBank();
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "id")
                     {
-                        moneybank.Id = int.Parse(reader.ReadElementContentAsString());
+                        moneybank.Id = reader.ReadElementContentAsString();
                     }
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "name")
                     {
@@ -93,7 +93,7 @@ namespace ExpensesCheck.Controller
                         /*moneybank.Type = (TypeOfMoneyBank)Enum.Parse(typeof(TypeOfMoneyBank), reader.ReadElementContentAsString()); если тип сохранен как строка*/
                         moneybank.Type = (TypeOfMoneyBank)int.Parse(reader.ReadElementContentAsString()); // если тип сохранен как значение
                     }
-                    if (moneybank.Id != 0)
+                    if (moneybank.Id != "")
                     {
                         result.Add(moneybank);
                     }
@@ -101,7 +101,7 @@ namespace ExpensesCheck.Controller
             }
             return result;
         }
-        public MoneyBank GetById(int id)
+        public MoneyBank GetById(string id)
         {
             var result = new MoneyBank();
             foreach (var i in moneyBanks)

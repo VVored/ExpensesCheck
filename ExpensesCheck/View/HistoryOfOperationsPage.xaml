@@ -27,14 +27,14 @@
                     <StackPanel Orientation="Horizontal">
                         <Border Background="{Binding Recipient.Color}" BorderThickness="1" BorderBrush="{Binding Recipient.Color}" CornerRadius="500">
                             <StackPanel Margin="15" Orientation="Horizontal">
-                                <Image Margin="0, 0" Height="50" Source="{Binding Recipient.ImagePath}"></Image>
+                                <Image Margin="0, 0" Height="30" Source="{Binding Recipient.ImagePath}"></Image>
                             </StackPanel>
                         </Border>
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Center">
                             <TextBlock Text="{Binding Recipient.Name}"></TextBlock>
                             <TextBlock Text="{Binding Sender.Name}"></TextBlock>
                         </StackPanel>
-                        <TextBlock VerticalAlignment="Center" Text="{Binding MoneyAmount}"></TextBlock>
+                        <TextBlock Margin="10" VerticalAlignment="Center" Text="{Binding MoneyAmount}"></TextBlock>
                         <TextBlock VerticalAlignment="Center" Text="{Binding DateOfTransaction}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>

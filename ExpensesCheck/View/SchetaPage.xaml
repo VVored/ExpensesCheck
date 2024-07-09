@@ -10,16 +10,17 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="347*"/>
+            <RowDefinition Height="56*"/>
         </Grid.RowDefinitions>
-        <Viewbox Grid.Row="0" HorizontalAlignment="Left" Margin="20,0">
+        <Viewbox Grid.Row="0" HorizontalAlignment="Left" Margin="20,0,0,0">
             <TextBlock>Счета:</TextBlock>
         </Viewbox>
-        <ListView Name="lvScheta" Grid.Row="1">
+        <ListView Name="lvScheta" Margin="0,56,0,0" Grid.RowSpan="3">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" Margin="20, 0"></StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20, 0"></StackPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
@@ -34,9 +35,22 @@
                             <TextBlock FontSize="25" Text="{Binding Name}"></TextBlock>
                             <TextBlock FontSize="25" Text="{Binding TotalBankToString}"></TextBlock>
                         </StackPanel>
+                        <StackPanel Margin="20, 0" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button Click="deleteWallet" Margin="20, 0" Background="Red" BorderBrush="Red">
+                                <Image Source="../imgs/delete.png"></Image>
+                            </Button>
+                            <Button Margin="20, 0" Background="Gray" BorderBrush="Gray">
+                                <Image Source="../imgs/edit.png"></Image>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Viewbox Grid.Row="2">
+            <Button Height="30" Margin="4" VerticalAlignment="Center" Background="CornflowerBlue" BorderBrush="CornflowerBlue">
+                <Image Source="../imgs/add.png"></Image>
+            </Button>
+        </Viewbox>
     </Grid>
 </Page>

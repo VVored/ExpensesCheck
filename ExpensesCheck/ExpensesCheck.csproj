@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="imgs\add.png" />
+    <None Remove="imgs\addFile.png" />
+    <None Remove="imgs\delete.png" />
+    <None Remove="imgs\edit.png" />
     <None Remove="imgs\scheta.png" />
   </ItemGroup>
 
@@ -18,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="imgs\add.png" />
+    <Resource Include="imgs\addFile.png" />
+    <Resource Include="imgs\delete.png" />
+    <Resource Include="imgs\edit.png" />
     <Resource Include="imgs\scheta.png" />
   </ItemGroup>
 

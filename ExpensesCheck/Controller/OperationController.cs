@@ -18,9 +18,9 @@ namespace ExpensesCheck.Controller
             moneyBankController = new MoneyBankController();
             operations = ImportDataFromXml();
         }
-        public void AddOperation(int id,decimal amount, MoneyBank sender, MoneyBank recipient)
+        public void AddOperation(decimal amount, MoneyBank sender, MoneyBank recipient)
         {
-            Operation operation = new Operation(id, amount, sender, recipient, DateTime.Now);
+            Operation operation = new Operation(amount, sender, recipient, DateTime.Now);
             sender.TotalBank -= amount;
             recipient.TotalBank += amount;
             operations.Add(operation);
@@ -60,7 +60,7 @@ namespace ExpensesCheck.Controller
                     var operation = new Operation();
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "id")
                     {
-                        operation.Id = int.Parse(reader.ReadElementContentAsString());
+                        operation.Id = reader.ReadElementContentAsString();
                     }
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "moneyamount")
                     {
@@ -68,17 +68,17 @@ namespace ExpensesCheck.Controller
                     }
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "senderId")
                     {
-                        operation.Sender = moneyBankController.GetById(int.Parse(reader.ReadElementContentAsString()));
+                        operation.Sender = moneyBankController.GetById(reader.ReadElementContentAsString());
                     }
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "recipientId")
                     {
-                        operation.Recipient = moneyBankController.GetById(int.Parse(reader.ReadElementContentAsString()));
+                        operation.Recipient = moneyBankController.GetById(reader.ReadElementContentAsString());
                     }
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "dateoftransaction")
                     {
                         operation.DateOfTransaction = DateTime.Parse(reader.ReadElementContentAsString());
                     }
-                    if (operation.Id !=  0)
+                    if (operation.Id !=  "")
                     {
                         result.Add(operation);
                     }

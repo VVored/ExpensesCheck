@@ -25,8 +25,23 @@ namespace ExpensesCheck.View
         public SchetaPage()
         {
             InitializeComponent();
+            InitializeListView();
+        }
+
+        public void InitializeListView()
+        {
             List<MoneyBank> wallets = MainWindow.moneyBankController.GetMoneyBanks().Where(moneybank => moneybank.Type == TypeOfMoneyBank.Счет).ToList();
             lvScheta.ItemsSource = wallets;
+        }
+
+        private void deleteWallet(object sender, RoutedEventArgs e)
+        {
+            var wallet = (sender as Button).DataContext as MoneyBank;
+            if (wallet != null)
+            {
+                MainWindow.moneyBankController.RemoveMoneyBank(wallet);
+                InitializeListView();
+            }
         }
     }
 }

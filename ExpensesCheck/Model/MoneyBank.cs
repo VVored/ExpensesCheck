@@ -10,9 +10,9 @@ namespace ExpensesCheck.Model
     public enum TypeOfMoneyBank { Счет = 1, Категория = 2 };
     public class MoneyBank
     {
-        public MoneyBank(int id, string name, decimal totalBank, SolidColorBrush color, string image, TypeOfMoneyBank typeOfMoneyBank)
+        public MoneyBank(string name, decimal totalBank, SolidColorBrush color, string image, TypeOfMoneyBank typeOfMoneyBank)
         {
-            Id = id;
+            Id = Guid.NewGuid().ToString("N");
             Name = name;
             TotalBank = totalBank;
             Color = color;
@@ -21,14 +21,14 @@ namespace ExpensesCheck.Model
         }
         public MoneyBank()
         {
-            Id = 0;
+            Id = "";
             Name = "";
             TotalBank = 0;
             Color = Brushes.Transparent;
             Image = "";
             Type = TypeOfMoneyBank.Категория;
         }
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public decimal TotalBank { get; set; }
         public SolidColorBrush Color { get; set; }
