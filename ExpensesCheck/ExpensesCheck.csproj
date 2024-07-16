@@ -12,20 +12,26 @@
     <None Remove="imgs\add.png" />
     <None Remove="imgs\addFile.png" />
     <None Remove="imgs\delete.png" />
+    <None Remove="imgs\download.png" />
     <None Remove="imgs\edit.png" />
+    <None Remove="imgs\empty.png" />
     <None Remove="imgs\scheta.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.1" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
+    <PackageReference Include="Mono.Cecil" Version="0.11.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="imgs\add.png" />
     <Resource Include="imgs\addFile.png" />
     <Resource Include="imgs\delete.png" />
+    <Resource Include="imgs\download.png" />
     <Resource Include="imgs\edit.png" />
+    <Resource Include="imgs\empty.png" />
     <Resource Include="imgs\scheta.png" />
   </ItemGroup>
 

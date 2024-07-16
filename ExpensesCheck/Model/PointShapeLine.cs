@@ -1,6 +1,7 @@
 ﻿using ExpensesCheck.Controller;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.Windows.Media;
 
 namespace ExpensesCheck.Model
 {
@@ -22,7 +23,7 @@ namespace ExpensesCheck.Model
                 {
                     Title = moneyBank.Name,
                     Values = monthsValues,
-                    Fill = moneyBank.Color,
+                    Fill = moneyBank.BrushFromColor,
                     DataLabels = true
                 });
             }

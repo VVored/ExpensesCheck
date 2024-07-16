@@ -18,7 +18,15 @@
         <Viewbox Grid.Row="0" HorizontalAlignment="Left" Margin="20,0">
             <TextBlock>Категории:</TextBlock>
         </Viewbox>
-        <ListView Grid.Row="1" Name="lvCatergory">
+        <ListView Grid.Row="1" Name="lvCategory">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="addCategory" Header="Добавить"></MenuItem>
+                    <MenuItem Click="deleteCategory" Header="Удалить"></MenuItem>
+                    <MenuItem Click="editCategory" Header="Редактировать"></MenuItem>
+                    <MenuItem Click="addOperation" Header="Записать операцию"></MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="700"></WrapPanel>
@@ -27,7 +35,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <Button Background="{Binding Color}" BorderBrush="{Binding Color}">
+                        <Button Click="addOperation" Background="{Binding BrushFromColor}" BorderBrush="{Binding BrushFromColor}">
                             <Button.Content>
                                 <Image Source="{Binding ImagePath}"></Image>
                             </Button.Content>

@@ -26,7 +26,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Border Background="{Binding Color}" BorderThickness="1" BorderBrush="{Binding Color}" CornerRadius="500">
+                        <Border Background="{Binding BrushFromColor}" BorderThickness="1" BorderBrush="{Binding BrushFromColor}" CornerRadius="500">
                             <StackPanel Margin="15" Orientation="Horizontal">
                                 <Image Margin="0, 0" Height="50" Source="{Binding ImagePath}"></Image>
                             </StackPanel>
@@ -36,10 +36,10 @@
                             <TextBlock FontSize="25" Text="{Binding TotalBankToString}"></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="20, 0" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Button Click="deleteWallet" Margin="20, 0" Background="Red" BorderBrush="Red">
+                            <Button Click="deleteWallet" Height="50" Width="50" Margin="20, 0" Background="Red" BorderBrush="Red">
                                 <Image Source="../imgs/delete.png"></Image>
                             </Button>
-                            <Button Margin="20, 0" Background="Gray" BorderBrush="Gray">
+                            <Button Click="EditWalletWindowOpen" Height="50" Width="50" Margin="20, 0" Background="Gray" BorderBrush="Gray">
                                 <Image Source="../imgs/edit.png"></Image>
                             </Button>
                         </StackPanel>
@@ -48,7 +48,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <Viewbox Grid.Row="2">
-            <Button Height="30" Margin="4" VerticalAlignment="Center" Background="CornflowerBlue" BorderBrush="CornflowerBlue">
+            <Button Click="AddWalletWindowOpen" Height="50" Width="50" VerticalAlignment="Center" Background="CornflowerBlue" BorderBrush="CornflowerBlue">
                 <Image Source="../imgs/add.png"></Image>
             </Button>
         </Viewbox>

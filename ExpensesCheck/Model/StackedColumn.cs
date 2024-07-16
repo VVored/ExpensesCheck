@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using System.Windows.Media;
 
 namespace ExpensesCheck.Model
 {
@@ -28,7 +29,7 @@ namespace ExpensesCheck.Model
                 {
                     Title = moneyBank.Name,
                     Values = monthsValues,
-                    Fill = moneyBank.Color,
+                    Fill = moneyBank.BrushFromColor,
                     StackMode = StackMode.Values,
                     DataLabels = true
                 });

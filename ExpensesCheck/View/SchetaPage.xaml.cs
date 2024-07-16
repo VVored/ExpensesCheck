@@ -40,8 +40,26 @@ namespace ExpensesCheck.View
             if (wallet != null)
             {
                 MainWindow.moneyBankController.RemoveMoneyBank(wallet);
+                MainWindow.moneyBankController.SaveChangesToXml();
                 InitializeListView();
             }
+        }
+
+        private void AddWalletWindowOpen(object sender, RoutedEventArgs e)
+        {
+            MoneyBank newMoneyBank = new MoneyBank();
+            newMoneyBank.Type = TypeOfMoneyBank.Счет;
+            AddOrEditMoneyBankWindow addOrEditMoneyBankWindow = new AddOrEditMoneyBankWindow(newMoneyBank);
+            addOrEditMoneyBankWindow.ShowDialog();
+            InitializeListView();
+        }
+
+        private void EditWalletWindowOpen(object sender, RoutedEventArgs e)
+        {
+            var wallet = (sender as Button).DataContext as MoneyBank;
+            AddOrEditMoneyBankWindow addOrEditMoneyBankWindow = new AddOrEditMoneyBankWindow(wallet);
+            addOrEditMoneyBankWindow.ShowDialog();
+            InitializeListView();
         }
     }
 }

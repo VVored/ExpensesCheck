@@ -23,14 +23,12 @@ namespace ExpensesCheck.Controller
         public void AddMoneyBank(MoneyBank moneyBank)
         {
             moneyBanks.Add(moneyBank);
-            SaveChangesToXml();
         }
         public void RemoveMoneyBank(MoneyBank moneyBank)
         {
             moneyBanks.Remove(moneyBank);
-            SaveChangesToXml();
         }
-        private void SaveChangesToXml()
+        public void SaveChangesToXml()
         {
             using (XmlWriter writer = XmlWriter.Create("..\\..\\..\\xmlFiles\\MoneyBank.xml"))
             {
@@ -44,7 +42,7 @@ namespace ExpensesCheck.Controller
                     writer.WriteElementString("id", i.Id.ToString());
                     writer.WriteElementString("name", i.Name);
                     writer.WriteElementString("totalbank", i.TotalBank.ToString());
-                    writer.WriteElementString("color", i.Color.Color.ToString());
+                    writer.WriteElementString("color", i.Color.ToString());
                     writer.WriteElementString("image", i.Image);
                     writer.WriteElementString("type", ((int)i.Type).ToString());
 
@@ -58,7 +56,6 @@ namespace ExpensesCheck.Controller
         private List<MoneyBank> ImportDataFromXml()
         {
             List<MoneyBank> result = new List<MoneyBank>();
-            var brushConverter = new BrushConverter();
             using (XmlReader reader = XmlReader.Create("..\\..\\..\\xmlFiles\\MoneyBank.xml"))
             {
                 while (reader.Read())
@@ -78,10 +75,10 @@ namespace ExpensesCheck.Controller
                     }
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "color")
                     {
-                        moneybank.Color = (SolidColorBrush)brushConverter.ConvertFrom(reader.ReadElementContentAsString());
+                        moneybank.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(reader.ReadElementContentAsString());
                         if (moneybank.Color == null)
                         {
-                            moneybank.Color = Brushes.AliceBlue;
+                            moneybank.Color = Colors.AliceBlue;
                         }
                     }
                     if (reader.NodeType == XmlNodeType.Element && reader.Name == "image")

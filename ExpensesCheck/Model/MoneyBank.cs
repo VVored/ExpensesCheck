@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ExpensesCheck.Model
 {
     public enum TypeOfMoneyBank { Счет = 1, Категория = 2 };
     public class MoneyBank
     {
-        public MoneyBank(string name, decimal totalBank, SolidColorBrush color, string image, TypeOfMoneyBank typeOfMoneyBank)
+        public MoneyBank(string name, decimal totalBank, Color color, string image, TypeOfMoneyBank typeOfMoneyBank)
         {
             Id = Guid.NewGuid().ToString("N");
             Name = name;
@@ -24,21 +20,29 @@ namespace ExpensesCheck.Model
             Id = "";
             Name = "";
             TotalBank = 0;
-            Color = Brushes.Transparent;
+            Color = Colors.Transparent;
             Image = "";
             Type = TypeOfMoneyBank.Категория;
         }
         public string Id { get; set; }
         public string Name { get; set; }
         public decimal TotalBank { get; set; }
-        public SolidColorBrush Color { get; set; }
+        public Color Color { get; set; }
         public string Image { get; set; }
         public TypeOfMoneyBank Type { get; set; }
+        public ImageSource ImageSource { get; set; }
         public virtual string ImagePath
         {
             get
             {
-                return "..\\imgs\\" + Image;
+                if (Image != "")
+                {
+                    return "\\imgs\\" + Image;
+                }
+                else
+                {
+                    return "\\imgs\\empty.png";
+                }
             }
         }
         public virtual string TotalBankToString
@@ -47,6 +51,17 @@ namespace ExpensesCheck.Model
             {
                 return TotalBank + " RUB";
             }
+        }
+        public virtual SolidColorBrush BrushFromColor
+        {
+            get
+            {
+                return new SolidColorBrush(Color);
+            }
+        }
+        public void LoadImage()
+        {
+            ImageSource = new BitmapImage(new Uri(ImagePath, UriKind.Relative));
         }
     }
 }
