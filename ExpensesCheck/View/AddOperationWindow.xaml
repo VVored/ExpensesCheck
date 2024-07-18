@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:ExpensesCheck.View"
         Style="{StaticResource MaterialDesignWindow}"
         mc:Ignorable="d"
-        Title="AddOperationWindow" Height="350" Width="500">
+        Title="AddOperationWindow" Height="400" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="105*"/>
             <RowDefinition Height="116*"/>
-            <RowDefinition Height="25*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -50,11 +51,14 @@
                 </StackPanel>
             </StackPanel>
         </Viewbox>
-        <Button Margin="3" Click="EditSender" Width="50" Background="Gray" BorderBrush="Gray" Grid.Column="0" Grid.Row="2">
+        <Button Margin="0" Click="EditSender" Width="50" Background="Gray" BorderBrush="Gray" Grid.Column="0" Grid.Row="2">
             <Image Source="../imgs/edit.png"></Image>
         </Button>
-        <Button Margin="3" Click="EditRecipient" Width="50" Background="Gray" BorderBrush="Gray" Grid.Column="1" Grid.Row="2">
+        <Button Margin="0" Click="EditRecipient" Width="50" Background="Gray" BorderBrush="Gray" Grid.Column="1" Grid.Row="2">
             <Image Source="../imgs/edit.png"></Image>
         </Button>
+        <Viewbox Grid.Row="3" Grid.ColumnSpan="2">
+            <Button Width="150" Height="50" Background="Green" BorderBrush="Green" Click="CreateOperation">Подтвердить</Button>
+        </Viewbox>
     </Grid>
 </Window>

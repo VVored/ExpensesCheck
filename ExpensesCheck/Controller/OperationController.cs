@@ -18,15 +18,13 @@ namespace ExpensesCheck.Controller
             moneyBankController = new MoneyBankController();
             operations = ImportDataFromXml();
         }
-        public void AddOperation(decimal amount, MoneyBank sender, MoneyBank recipient)
+        public void AddOperation(Operation operation)
         {
-            Operation operation = new Operation(amount, sender, recipient, DateTime.Now);
-            sender.TotalBank -= amount;
-            recipient.TotalBank += amount;
             operations.Add(operation);
-            SaveChangesToXml();
+            operation.Sender.TotalBank -= operation.MoneyAmount;
+            operation.Recipient.TotalBank += operation.MoneyAmount;
         }
-        private void SaveChangesToXml()
+        public void SaveChangesToXml()
         {
             using (XmlWriter writer = XmlWriter.Create("..\\..\\..\\xmlFiles\\Operation.xml"))
             {

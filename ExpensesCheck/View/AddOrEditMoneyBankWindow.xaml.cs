@@ -49,34 +49,18 @@ namespace ExpensesCheck.View
             if (result == true)
             {
                 filename = dialog.FileName;
+                var allBytes = File.ReadAllBytes(filename);
                 string fileTitle = System.IO.Path.GetFileName(dialog.FileName);
                 string path = "..\\..\\..\\imgs\\" + fileTitle;
                 if (!File.Exists(path))
                 {
                     File.Copy(filename, path, true);
                 }
-                /*IsDynamicAssemblyCreatesSuccessfully(filename, fileTitle);*/
                 moneyBank.Image = fileTitle;
                 moneyBank.LoadImage();
                 imagePicture.Source = moneyBank.ImageSource;
             }
         }
-        /*public void IsDynamicAssemblyCreatesSuccessfully(string imageFilePath, string fileTitle)
-        {
-            var asmName = new AssemblyNameDefinition("DynamicAssembly", new Version(1, 0, 0, 0));
-            var assembly = Mono.Cecil.AssemblyDefinition.CreateAssembly(asmName, "<Module>", ModuleKind.Dll);
-
-            byte[] imageData = File.ReadAllBytes(imageFilePath);
-
-            var imageResource = new EmbeddedResource(fileTitle, Mono.Cecil.ManifestResourceAttributes.Private, imageData);
-            assembly.MainModule.Resources.Add(imageResource);
-
-            string desktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string assemblyPath = System.IO.Path.Combine(desktopDirectory, "DynamicAssembly.dll");
-
-            assembly.Write(assemblyPath);
-        }*/
-
         private void SaveMoneyBankClick(object sender, RoutedEventArgs e)
         {
             if (moneyBank.Id == "")

@@ -29,6 +29,11 @@ namespace ExpensesCheck.View
         {
             InitializeComponent();
             InitializeListView();
+            InitializePieChart();
+        }
+        public void InitializePieChart()
+        {
+            pieChart.Series = new SeriesCollection();
             foreach (var MoneyBank in categories)
             {
                 pieChart.Series.Add(new PieSeries
@@ -87,6 +92,7 @@ namespace ExpensesCheck.View
                 AddOperationWindow addOperationWindow = new AddOperationWindow(operation);
                 addOperationWindow.ShowDialog();
                 InitializeListView();
+                InitializePieChart();
             }
         }
     }

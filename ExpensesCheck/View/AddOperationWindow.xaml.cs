@@ -43,5 +43,17 @@ namespace ExpensesCheck.View
             DataContext = null;
             DataContext = operation;
         }
+
+        private void CreateOperation(object sender, RoutedEventArgs e)
+        {
+            operation.Id = Guid.NewGuid().ToString("N");
+            if (operation.MoneyAmount > 0)
+            {
+                MainWindow.operationController.AddOperation(operation);
+                MainWindow.moneyBankController.SaveChangesToXml();
+                MainWindow.operationController.SaveChangesToXml();
+                Close();
+            }
+        }
     }
 }
